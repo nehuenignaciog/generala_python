@@ -4,7 +4,9 @@ info@inove.com.ar\
 Web: [Inove](http://inove.com.ar)
 
 # Generala! [Python]
-En este repositorio se encuentra la implementación del juego de la generala, el desafio de profundización de la clase de funciones del curso de python inicial.
+En este repositorio se encuentra la implementación del juego de la generala, el desafio de profundización de la clase de funciones del curso de python inicial.\
+
+En el archivo __generala.py__ se encuentra la implementación final. Los otros archivos son las pruebas que se hicieron al rededor antes de comenzar a implementar el código definitivo.
 
 # Videos tutoriales! [Python]
 
