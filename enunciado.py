@@ -1,5 +1,5 @@
-# Funciones [Python]
-# Ejercicios de profundización
+# Python Inicial [Python]
+# Ejercicio integrador
 
 # Autor: Inove Coding School
 # Version: 2.0
@@ -26,8 +26,10 @@ Deberá realizar una lista para guardar 5 dados, guardar los números
 sacados en esa tirada de de dados (son 5 dados, cada uno del número 1 al 6)
 
 1) El jugador tira la dados y saca 5 números aleatorios, puede usar
-la función de "lista_aleatoria" para generar dichas lista de números.
-Esa lista de datos se llamará "dados_tirados"
+la función de "lista_aleatoria" para generar dichas lista de números
+(la función "lista_aleatoria" se creó en los ejercicios de profudización de funciones)
+
+Esa lista de datos generada aleatoriamente se llamará "dados_tirados"
 Lista "dados_tirados" se utiliza para guardar 5 dados, cada dado es de 6 caras,
 es decir que cada dado puede valer un número de 1 a 6.
 
@@ -35,12 +37,13 @@ es decir que cada dado puede valer un número de 1 a 6.
 más se repitio entre los 5 dados.
 Debe usar la función de Python "max" con la "key" de list.count para
 determinar cual fue el número que más se repitió en esa tirada. 
-Consultar los ejemplos vistos en clase en donde se realizó esta operación con "max"
+Consultar los ejemplos de anexo de la clase de funciones en donde se realizó esta operación con "max"
 
 3) Una vez reconocido el número más repetido entre los 5 dados,
 debe guardar en una variable aparte llamda "contador_generala"
 cuantas veces se repitió hasta ahora el número más repetido. 
-Ese número será el candidato para busscar sacar generala.
+Ese número será el candidato para buscar sacar generala.
+
 Si por ejemplo salió 4-4-2-1-4, debe quedarse con esos tres "4",
 por lo canto el "contador_generala" valdrá 3, porque el primer número
 más repetido fue 4, y este número salio tres veces en la primera tirada.
