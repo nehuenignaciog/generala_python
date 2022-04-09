@@ -94,7 +94,26 @@ def contar(lista, numero_contar):
 
 
 def valor_repetido(lista):
-    return max(lista, key=lista.count)
+    numero_repetido = max(lista, key=lista.count)
+
+    if contar(dados_tirados, numero_repetido) > 1:
+        return numero_repetido
+    else:
+        return 0
+
+def pregunto_jugar(tiradas):
+    
+    if tiradas > 0:
+        respuesta = str(input("\n¿Quiere volver tirar los dados ? SI / NO\n"))
+    else:
+        respuesta = str(input("\n¿Quiere tirar los dados ? SI / NO\n"))
+    
+    respuesta = respuesta.lower()
+    if respuesta == 'si':
+        return True
+    else: 
+        return False
+
 
 # --------------------------------
 
@@ -103,13 +122,15 @@ if __name__ == '__main__':
     # A partir de aquí escriba el código que
     # invoca a las funciones y resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
-    condicion = True
+    jugar = True
     tiradas = 0
     contador_generala = 0
-    numero_repetido_1 = 0
-    numero_repetido_2 = 0
+    numero_repetido = 0
+    
 
-    while condicion:
+    jugar = pregunto_jugar(tiradas)
+
+    while jugar:
         tiradas += 1
         cantidad_dados = 5
 
@@ -121,36 +142,45 @@ if __name__ == '__main__':
         # Vuelvo ingresar si no sacaron mas de 2 dados iguales
 
         if contador_generala < 2:
+            
             dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
             print ("Dados Tirados:", dados_tirados)
 
-            numero_repetido_1 = valor_repetido(dados_tirados)
-            print ("Numero repetido:", numero_repetido_1)
+            numero_repetido = valor_repetido(dados_tirados)
+            print ("Numero repetido:", numero_repetido)
 
-            contador_generala = contar(dados_tirados, numero_repetido_1)
+            contador_generala = contar(dados_tirados, numero_repetido)
             print ("Cantidad Repeticiones:", contador_generala)
+
+            if contador_generala < 2:
+                print ("Ustede necesita al menos dos dados iguales. Vuelva a intentarlo!")
+
         else:
+                   
             cantidad_dados -= contador_generala
 
             dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
             print ("Dados Tirados:", dados_tirados)
 
-            numero_repetido_2 = valor_repetido(dados_tirados)
-            print ("Numero repetido:", numero_repetido_2)
+            repeticiones_numero_1 = contar(dados_tirados, numero_repetido)
 
             # Si coincide el numero, sumo el contador de dados
 
-            if numero_repetido_1 == numero_repetido_2:
-                contador_generala += contar(dados_tirados, numero_repetido_2)
-                print ("Estas con suerte!")
-            else:
-                print ("ops.. vuelve a intentarlo!")
+            if repeticiones_numero_1 >= 1:
+                contador_generala += contar(dados_tirados, numero_repetido)
+                print ("Estas con suerte! Usted ya tiene {} dados ".format(contador_generala) )
 
-            print ("Cantidad Repeticiones:", contador_generala)
+            else:
+                print ("ops.. vuelve a intentarlo! Usted necesita sacar  el número {}".format(numero_repetido))
+
+           
 
         # Cuando completo todos los dados iguales, salgo del programa
+        
         if contador_generala == 5:
-            condicion = False
+            break
+        
+        jugar = pregunto_jugar(tiradas)
 
 print ("\nGenerala !!!\nFelicitaciones !\n")
 
