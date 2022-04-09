@@ -101,17 +101,17 @@ def valor_repetido(lista):
     else:
         return 0
 
+
 def pregunto_jugar(tiradas):
-    
     if tiradas > 0:
         respuesta = str(input("\n¿Quiere volver tirar los dados ? SI / NO\n"))
     else:
         respuesta = str(input("\n¿Quiere tirar los dados ? SI / NO\n"))
-    
+
     respuesta = respuesta.lower()
     if respuesta == 'si':
         return True
-    else: 
+    else:
         return False
 
 
@@ -126,7 +126,6 @@ if __name__ == '__main__':
     tiradas = 0
     contador_generala = 0
     numero_repetido = 0
-    
 
     jugar = pregunto_jugar(tiradas)
 
@@ -142,7 +141,7 @@ if __name__ == '__main__':
         # Vuelvo ingresar si no sacaron mas de 2 dados iguales
 
         if contador_generala < 2:
-            
+
             dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
             print ("Dados Tirados:", dados_tirados)
 
@@ -156,7 +155,7 @@ if __name__ == '__main__':
                 print ("Ustede necesita al menos dos dados iguales. Vuelva a intentarlo!")
 
         else:
-                   
+
             cantidad_dados -= contador_generala
 
             dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
@@ -168,19 +167,16 @@ if __name__ == '__main__':
 
             if repeticiones_numero_1 >= 1:
                 contador_generala += contar(dados_tirados, numero_repetido)
-                print ("Estas con suerte! Usted ya tiene {} dados ".format(contador_generala) )
+                print ("Estas con suerte! Usted ya tiene {} dados ".format(contador_generala))
 
             else:
                 print ("ops.. vuelve a intentarlo! Usted necesita sacar  el número {}".format(numero_repetido))
 
-           
-
         # Cuando completo todos los dados iguales, salgo del programa
-        
+
         if contador_generala == 5:
             break
-        
+
         jugar = pregunto_jugar(tiradas)
 
 print ("\nGenerala !!!\nFelicitaciones !\n")
-
