@@ -4,7 +4,7 @@
 # Autor: Inove Coding School
 # Version: 2.0
 
-# NOTA: 
+# NOTA:
 # Estos ejercicios son de mayor dificultad que los de clase y práctica.
 # Están pensados para aquellos con conocimientos previo o que dispongan
 # de mucho más tiempo para abordar estos temas por su cuenta.
@@ -81,6 +81,21 @@ import random
 # todas las funciones que utilice
 
 
+def lista_aleatoria(inicio, fin, cantidad):
+    lista_numeros = []
+    for i in range(cantidad):
+        numero = random.randint(inicio, fin)
+        lista_numeros.append(numero)
+    return lista_numeros
+
+
+def contar(lista, numero_contar):
+    return lista.count(numero_contar)
+
+
+def valor_repetido(lista):
+    return max(lista, key=lista.count)
+
 # --------------------------------
 
 if __name__ == '__main__':
@@ -88,3 +103,54 @@ if __name__ == '__main__':
     # A partir de aquí escriba el código que
     # invoca a las funciones y resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
+    condicion = True
+    tiradas = 0
+    contador_generala = 0
+    numero_repetido_1 = 0
+    numero_repetido_2 = 0
+
+    while condicion:
+        tiradas += 1
+        cantidad_dados = 5
+
+        # Muestro el numero de la tirada
+
+        print ("\nNumero de tiradas:", tiradas)
+
+        # Primera tirada
+        # Vuelvo ingresar si no sacaron mas de 2 dados iguales
+
+        if contador_generala < 2:
+            dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
+            print ("Dados Tirados:", dados_tirados)
+
+            numero_repetido_1 = valor_repetido(dados_tirados)
+            print ("Numero repetido:", numero_repetido_1)
+
+            contador_generala = contar(dados_tirados, numero_repetido_1)
+            print ("Cantidad Repeticiones:", contador_generala)
+        else:
+            cantidad_dados -= contador_generala
+
+            dados_tirados = lista_aleatoria(1, 6, cantidad_dados)
+            print ("Dados Tirados:", dados_tirados)
+
+            numero_repetido_2 = valor_repetido(dados_tirados)
+            print ("Numero repetido:", numero_repetido_2)
+
+            # Si coincide el numero, sumo el contador de dados
+
+            if numero_repetido_1 == numero_repetido_2:
+                contador_generala += contar(dados_tirados, numero_repetido_2)
+                print ("Estas con suerte!")
+            else:
+                print ("ops.. vuelve a intentarlo!")
+
+            print ("Cantidad Repeticiones:", contador_generala)
+
+        # Cuando completo todos los dados iguales, salgo del programa
+        if contador_generala == 5:
+            condicion = False
+
+print ("\nGenerala !!!\nFelicitaciones !\n")
+
